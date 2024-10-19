@@ -8,6 +8,8 @@ The Number Sequence Predictor is a machine learning application that predicts fu
 
 This project demonstrates the application of time series analysis and deep learning in creating a practical tool for data analysts, researchers, and anyone interested in sequence prediction. It serves as an excellent example of an end-to-end machine learning project, from data preprocessing and model training to deploying a web application with multiple hosting options.
 
+This project is inspired by various machine learning projects in the field of time series prediction and natural language processing. It aims to showcase the practical application of these techniques in a user-friendly manner.
+
 ## Table of Contents
 
 1. [Dataset](#dataset)
@@ -28,7 +30,7 @@ The model training process is detailed in the `Predicting_Sequence.ipynb` notebo
 You can train the model locally or use Google Colab for training. To use Google Colab:
 1. Upload the `Predicting_Sequence.ipynb` notebook to Google Colab.
 2. Run the notebook cells to train the model.
-3. Download the trained model file.
+3. Download the trained model file (`number_sequence_model.keras`).
 
 ## Streamlit Application
 
@@ -89,13 +91,32 @@ There are several ways to deploy and use this application:
    - Deploy the app: `git push heroku main`
    - Open the app: `heroku open`
 
-4. **Deploy on Google Cloud Platform**:
+4. **Deploy on AWS EC2**:
+   - Launch an EC2 instance and SSH into it.
+   - Install required dependencies:
+     ```
+     sudo yum update -y
+     sudo yum install git python3 python3-pip -y
+     ```
+   - Clone the repository and navigate to the app directory.
+   - Install the required Python packages: `pip3 install -r requirements.txt`
+   - Run the Streamlit app: `streamlit run app.py`
+   - Configure security groups to allow inbound traffic on port 8501.
+
+5. **Deploy on Google Cloud Platform**:
    - Set up a [Google Cloud account](https://cloud.google.com/) and create a new project.
    - Install the [Google Cloud SDK](https://cloud.google.com/sdk/docs/install).
    - Make sure `app.yaml` is in the `app/` directory before deploying.
    - Initialize your app: `gcloud app create`
    - Deploy the app: `gcloud app deploy`
    - Access your app: `gcloud app browse`
+
+6. **Deploy on Microsoft Azure**:
+   - Set up an [Azure account](https://azure.microsoft.com/).
+   - Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
+   - Create a resource group and app service plan.
+   - Create a web app: `az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name number-sequence-predictor --runtime "PYTHON|3.7"`
+   - Configure GitHub deployment: `az webapp deployment source config --name number-sequence-predictor --resource-group myResourceGroup --repo-url https://github.com/pouryare/number-sequence-predictor.git --branch main --manual-integration`
 
 ## File Structure
 ```
@@ -116,13 +137,16 @@ number-sequence-predictor/
 
 ## Usage
 
-1. Open the application (either locally or on a deployed platform).
-2. Enter a sequence of numbers in the input field provided.
-3. Select the number of time steps and future predictions.
-4. Click the "Predict" button to view the predicted future values.
+1. Ensure you have the `number_sequence_model.keras` file in the root directory. If not, train the model using the `Predicting_Sequence.ipynb` notebook.
+2. Open the application (either locally or on a deployed platform).
+3. Enter a sequence of numbers in the input field provided.
+4. Select the number of time steps and future predictions.
+5. Click the "Predict" button to view the predicted future values.
 
 ---
 
 This project demonstrates the application of deep learning in creating a number sequence prediction tool with a web application interface. It serves as an excellent example of an end-to-end machine learning project with practical applications in time series analysis and forecasting.
+
+The project is inspired by and builds upon various machine learning projects in the fields of time series analysis and sequence prediction. It aims to provide a practical, user-friendly implementation of these techniques for educational and practical purposes.
 
 For any issues or suggestions, please open an issue on the [GitHub repository](https://github.com/pouryare/number-sequence-predictor).
